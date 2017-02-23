@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('penerbit');
-            $table->integer('tahun_terbit');
+            $table->date('tanggal_terbit');
             $table->timestamps();
         });
     }
