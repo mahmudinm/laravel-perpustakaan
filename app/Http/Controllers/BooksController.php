@@ -40,7 +40,8 @@ class BooksController extends Controller
             'name' => 'required|max:30',
             'description' => 'required|max:100',
             'penerbit' => 'required|max:30',
-            'tanggal_terbit' => 'required|date'
+            'tanggal_terbit' => 'required|date',
+            'stock' => 'required|integer'
         ]);
 
         $book = new Book;
@@ -48,20 +49,10 @@ class BooksController extends Controller
         $book->description = $request->description;
         $book->penerbit = $request->penerbit;
         $book->tanggal_terbit = $request->tanggal_terbit;
+        $book->stock = $request->stock;
         $book->save();
 
         return redirect()->route('books.index');
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
 
     }
 
@@ -89,7 +80,8 @@ class BooksController extends Controller
             'name' => 'required|max:30',
             'description' => 'required|max:100',
             'penerbit' => 'required|max:30',
-            'tanggal_terbit' => 'required|date'
+            'tanggal_terbit' => 'required|date',
+            'stock' => 'required|integer'
         ]);
 
         $book->update($request->all());

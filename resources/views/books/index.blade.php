@@ -19,6 +19,7 @@
                                 <th>Description</th>
                                 <th>Penerbit</th>
                                 <th>Tanggal Terbit</th>
+                                <th>Stock</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -29,6 +30,7 @@
                                     <td>{{ $book->description }}</td>
                                     <td>{{ $book->penerbit }}</td>
                                     <td>{{ $book->tanggal_terbit }}</td>
+                                    <td>{{ $book->stock }}</td>
                                     <td>
                                         {!! Form::model($book, ['route' => ['books.destroy', $book], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
                                           <a href="{{ route('books.edit', $book) }}" class="btn btn-success btn-xs">Edit</a> 

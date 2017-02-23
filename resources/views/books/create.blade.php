@@ -33,6 +33,13 @@
                             {!! Form::date('tanggal_terbit', null, ['class' => 'form-control', 'required' => 'required']) !!}
                             <small class="text-danger">{{ $errors->first('tanggal_terbit') }}</small>
                         </div>
+
+                        <div class="form-group{{ $errors->has('stock') ? ' has-error' : '' }}">
+                            {!! Form::label('stock', 'Stock') !!}
+                            {!! Form::number('stock', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            <small class="text-danger">{{ $errors->first('stock') }}</small>
+                        </div>
+
                         <br>
                         <div class="btn-group pull-right">                            
                             {!! Form::submit("Simpan", ['class' => 'btn btn-success']) !!}
