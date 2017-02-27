@@ -81,6 +81,16 @@
                 </div>
             </div>
         </nav>
+        
+        <div class="container">
+            @if (session()->has('flash_notification.message'))
+                <div class="alert alert-{{ session('flash_notification.level') }}">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                    {!! session('flash_notification.message') !!}
+                </div>
+            @endif          
+        </div>
 
         @yield('content')
     </div>
@@ -92,9 +102,10 @@
     <!-- polyfiller file to detect and load polyfills -->
     <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
     <script>
-      webshims.setOptions('waitReady', false);
-      webshims.setOptions('forms-ext', {types: 'date'});
-      webshims.polyfill('forms forms-ext');
+        webshims.setOptions('waitReady', false);
+        webshims.setOptions('forms-ext', {types: 'date'});
+        webshims.polyfill('forms forms-ext');
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
     @yield('script')
 </body>

@@ -50,7 +50,7 @@ class PeminjamansController extends Controller
         // validasi jika stock buku sudah habis
         $stock = Book::find($request->books);
         if ($stock->stock <= 0 ) {
-            return 'Stock buku habis';
+            flash('Maaf Stock Buku Habis', 'danger');
             return redirect()->back();
         }
 

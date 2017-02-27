@@ -19,6 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('books', 'BooksController');
-Route::resource('users', 'UsersController');
-Route::resource('peminjamans', 'PeminjamansController');
+Route::resource('books', 'BooksController',[
+	'except' => 'show'
+]);
+Route::resource('users', 'UsersController',[
+	'except' => 'show'
+]);
+Route::resource('peminjamans', 'PeminjamansController',[
+	'except' => 'show'
+]);
