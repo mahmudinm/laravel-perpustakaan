@@ -101,7 +101,13 @@ class UsersController extends Controller
             'alamat' => 'required|max:100',
         ]);
 
-        $user->update($request->all());
+        $user->nim = (int)$request->nim;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->no_handphone = $request->no_handphone;
+        $user->alamat = $request->alamat;
+        $user->save();
+
         return redirect()->route('users.index');
     }
 
