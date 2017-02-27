@@ -32,9 +32,9 @@
                                     <th>{{ $peminjaman->tgl_kembali }}</th>
                                     <th>
                                         <?php 
-                                            $datetime1 = strtotime($peminjaman->tgl_pinjam) ;
                                             $datetime2 = strtotime($peminjaman->tgl_kembali) ;
-                                            $durasi = ($datetime2 - $datetime1) / 86400 ;
+                                            $datenow = strtotime(date("Y-m-d"));
+                                            $durasi = ($datetime2 - $datenow) / 86400 ;
                                         ?>
                                         @if ($durasi < 0 )
                                             Durasi Habis / {{ $durasi }} Hari
@@ -66,3 +66,17 @@
     </div>
 </div>
 @endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ url('css/dataTables.bootstrap.css') }}">
+@stop
+
+@section('script')
+    <script src="{{ url('js/jquery.dataTables.js') }}"></script>
+    <script src="{{ url('js/dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(window).ready(function(){
+            $('table').DataTable();
+        });
+    </script>
+@stop

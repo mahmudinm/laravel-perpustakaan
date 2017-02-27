@@ -12,7 +12,7 @@
                         
                         <div class="form-group{{ $errors->has('nim') ? ' has-error' : '' }}">
                             {!! Form::label('nim', 'Nim') !!}
-                            {!! Form::number('nim', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('nim', null, ['class' => 'form-control', 'required' => 'required']) !!}
                             <small class="text-danger">{{ $errors->first('nim') }}</small>
                         </div>
 

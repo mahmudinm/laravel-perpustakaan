@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,15 +43,16 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nim' => 'required|integer',
+            'nim' => 'required|max:20',
             'name' => 'required|max:50',
             'email' => 'required|max:50',
             'no_handphone' => 'required|max:20',
             'alamat' => 'required|max:100',
         ]);
 
+
         $user = new User;
-        $user->nim = $request->nim;
+        $user->nim = (int)$request->nim;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->no_handphone = $request->no_handphone;
@@ -87,7 +94,7 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'nim' => 'required|integer',
+            'nim' => 'required|max:20',
             'name' => 'required|max:50',
             'email' => 'required|max:50',
             'no_handphone' => 'required|max:20',

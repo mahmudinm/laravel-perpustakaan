@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('no_handphone');
             $table->integer('nim');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

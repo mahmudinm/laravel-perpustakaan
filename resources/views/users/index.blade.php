@@ -46,3 +46,17 @@
     </div>
 </div>
 @endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ url('css/dataTables.bootstrap.css') }}">
+@stop
+
+@section('script')
+    <script src="{{ url('js/jquery.dataTables.js') }}"></script>
+    <script src="{{ url('js/dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(window).ready(function(){
+            $('table').DataTable();
+        });
+    </script>
+@stop

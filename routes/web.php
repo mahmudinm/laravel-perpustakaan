@@ -11,11 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'PeminjamansController@index');
+
+// Auth 
+Route::group([
+    'namespace' => 'Auth',
+], function () {
+	Route::get('login', 'LoginController@showLoginForm');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout');
+
+    Route::group(['prefix' => 'password'], function () {
+        // Forgot password
+        Route::get('forgot', 'ForgotPasswordController@showLinkRequestForm')->name('auth.password.forgot');
+        Route::post('forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('auth.password.forgot.store');
+
+        // Forgot password
+        Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('auth.password.reset');
+        Route::post('reset', 'ResetPasswordController@reset')->name('auth.password.reset.store');
+    });    
 });
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
