@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     List Buku 
@@ -30,7 +30,13 @@
                                     <td>{{ $book->description }}</td>
                                     <td>{{ $book->penerbit }}</td>
                                     <td>{{ $book->tanggal_terbit }}</td>
-                                    <td>{{ $book->stock }}</td>
+                                    <td>
+                                        @if ($book->stock <= 0)
+                                            Stock Habis
+                                        @else 
+                                            {{ $book->stock }}
+                                        @endif
+                                    </td>
                                     <td>
                                         {!! Form::model($book, ['route' => ['books.destroy', $book], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
                                           <a href="{{ route('books.edit', $book) }}" class="btn btn-success btn-xs">Edit</a> 

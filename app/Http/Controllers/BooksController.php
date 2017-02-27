@@ -37,7 +37,7 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:30',
+            'name' => 'required|unique:books|max:30',
             'description' => 'required|max:100',
             'penerbit' => 'required|max:30',
             'tanggal_terbit' => 'required|date',

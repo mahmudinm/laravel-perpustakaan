@@ -30,7 +30,7 @@
 
                         <div class="form-group{{ $errors->has('tanggal_terbit') ? ' has-error' : '' }}">
                             {!! Form::label('tanggal_terbit', 'Tanggal Terbit') !!}
-                            {!! Form::date('tanggal_terbit', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('tanggal_terbit', null, ['class' => 'form-control datepicker', 'required' => 'required']) !!}
                             <small class="text-danger">{{ $errors->first('tanggal_terbit') }}</small>
                         </div>
                         
@@ -53,3 +53,20 @@
     </div>
 </div>
 @endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ url('css/bootstrap-datepicker.css') }}">
+@stop
+
+@section('script')
+    <script src="{{ url('js/bootstrap-datepicker.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                todayBtn: "linked",
+                orientation: "bottom auto",
+                format: 'yyyy-mm-dd'
+            });
+        });   
+    </script>
+@stop

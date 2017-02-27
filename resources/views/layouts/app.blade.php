@@ -19,6 +19,8 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -45,7 +47,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('books.index') }}">Buku</a></li>
                         <li><a href="{{ route('users.index') }}">Users</a></li>
-                        <li><a href="#">Peminjaman</a></li>
+                        <li><a href="{{ route('peminjamans.index') }}">Peminjaman</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -85,5 +87,15 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <!-- cdn for modernizr, if you haven't included it already -->
+    <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+    <!-- polyfiller file to detect and load polyfills -->
+    <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+    <script>
+      webshims.setOptions('waitReady', false);
+      webshims.setOptions('forms-ext', {types: 'date'});
+      webshims.polyfill('forms forms-ext');
+    </script>
+    @yield('script')
 </body>
 </html>

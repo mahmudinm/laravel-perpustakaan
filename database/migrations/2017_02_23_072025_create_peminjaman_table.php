@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBorrowsTable extends Migration
+class CreatePeminjamanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBorrowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('borrows', function (Blueprint $table) {
+        Schema::create('peminjaman', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_book')->unsigned();
-            $table->integer('id_user')->unsigned(); 
-            $table->foreign('id_book')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('book_id')->unsigned();
+            $table->integer('user_id')->unsigned(); 
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('tgl_pinjam');
             $table->date('tgl_kembali');
         });
@@ -31,6 +31,6 @@ class CreateBorrowsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borrows');
+        Schema::dropIfExists('peminjamen');
     }
 }
