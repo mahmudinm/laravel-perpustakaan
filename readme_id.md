@@ -1,0 +1,6 @@
+    - pertama anda harus membuat projek laravel versi 5.4
+    -buat database dengan nama laravel_perpustakaan 
+    -import file sql laravel_perpustakaan.sql ke phpmyadmin
+    -jalankan perintah artisan berikut php artisan migrate 
+    - jalankan aplikasi dalam mode development dengan perintah php artisan serve
+    -selesai
